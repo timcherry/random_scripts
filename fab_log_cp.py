@@ -1,5 +1,5 @@
 import os
-from fabric.api import env
+from fabric.api import env, parallel
 from fabric.operations import run, put,get
 
 env.hosts = ['ct17.prod.livefyre.com',
@@ -11,6 +11,7 @@ env.hosts = ['ct17.prod.livefyre.com',
             "ct71.prod.livefyre.com",
             "ct72.prod.livefyre.com",]
 
+@parallel
 def scp_logs():
     os.mkdir("%s"%env.host_string)
     get("/var/log/livefyre/perseids-access-2013-11-14*", "./%s/"%env.host_string)
