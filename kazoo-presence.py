@@ -5,7 +5,7 @@ import time
 zk = KazooClient(hosts='127.0.0.1:2181')
 zk.start()
 
-path = '/test/nodes'
+path = '/applicatoin-foo/nodes'
 zk.ensure_path(path)
 
 @zk.ChildrenWatch(path)
