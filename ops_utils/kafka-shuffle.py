@@ -6,6 +6,11 @@ import subprocess
 import argparse
 import re
 
+"""
+This script automates:
+http://kafka.apache.org/documentation.html#basic_ops_cluster_expansion
+"""
+
 sleep_time = 5 * 60
 
 json_template = """
