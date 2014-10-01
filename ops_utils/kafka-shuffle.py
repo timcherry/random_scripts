@@ -11,6 +11,19 @@ This script automates:
 http://kafka.apache.org/documentation.html#basic_ops_cluster_expansion
 """
 
+"""
+Tried writing this to run in parallel(threads) but got the following:
+java.io.IOException: Connection reset by peer
+    at sun.nio.ch.FileDispatcherImpl.read0(Native Method)
+    at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39)
+    at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:225)
+    at sun.nio.ch.IOUtil.read(IOUtil.java:193)
+    at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:375)
+    at org.apache.zookeeper.ClientCnxn$SendThread.doIO(ClientCnxn.java:859)
+    at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1157)
+Current partition replica assignment
+"""
+
 sleep_time = 5 * 60
 
 json_template = """
