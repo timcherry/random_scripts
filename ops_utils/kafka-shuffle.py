@@ -5,7 +5,6 @@ import time
 import subprocess
 import argparse
 import re
-from threading import Thread
 
 """
 This script automates:
@@ -63,16 +62,5 @@ if __name__ == '__main__':
     broker_ids = args.broker_ids.split(",")
     topics = get_all_topics(args.zookeeper)
 
-    threads = list()
-
     for (topic, num_partions) in topics:
-        t = Thread(target=shuffle_parts, args=(broker_ids, 
-                                        topic, 
-                                        num_partions, 
-                                        args.zookeeper))
-        t.start()
-        threads.append(t)
-
-    for thread in threads:
-        thread.join()
-    print "All done." 
+        shuffle_parts(broker_ids, topic, num_partions, args.zookeeper)
